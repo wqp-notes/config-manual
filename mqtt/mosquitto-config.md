@@ -47,8 +47,8 @@ topic read aiot/#
   * 编译过程找不到ares.h；【解决方法】——sudo apt-get install libc-ares-dev
   * 编译过程找不到uuid/uuid.h；【解决方法】——sudo apt-get install uuid-dev
   * 使用过程中找不到libmosquitto.so.1；提示：error while loading shared libraries: libmosquitto.so.1: cannot open shared object file: No such file or directory；【解决方法】——修改libmosquitto.so位置：
-  > 创建链接：sudo ln -s /usr/local/lib/libmosquitto.so.1 /usr/lib/libmosquitto.so.1
-  > 更新动态链接库：sudo ldconfig
+  `> 创建链接：sudo ln -s /usr/local/lib/libmosquitto.so.1 /usr/lib/libmosquitto.so.1`
+  `> 更新动态链接库：sudo ldconfig`
   * make: g++：命令未找到；【解决方法】——sudo apt-get install g++
   * 启动mosquitto,执行:`mosquitto [–c 配置文件绝对路径] [-d daemon] [-p port] [-v verbose]`
   
