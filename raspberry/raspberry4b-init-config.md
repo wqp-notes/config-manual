@@ -36,24 +36,51 @@ country=CN
 2. 修改树莓派pi帐号密码
 `sudo passwd pi`
 3. 修改树莓派系统root帐号密码
-```
-1. sudo passwd root
-2. sudo passwd --unlock root
-3. 进入/etc/ssh/目录，打开nano sshd_config文件，将文件内PermitRootLogin without-password修改为PermitRootLogin yes并保存
-```
-
-4. 
+  > 1. sudo passwd root
+  > 2. sudo passwd --unlock root
+  > 3. 进入cd /etc/ssh/目录，打开nano sshd_config文件，将文件内PermitRootLogin without-password修改为PermitRootLogin yes并保存
+4. 修改系统环境变量：cd /etc/profile
 
 #### 更改软件源（可选）
-
+1. ssh方式登录树莓派
+2. 备份源文件：
+```
+  sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+  sudo cp /etc/apt/sources.list.d/raspi.list /etc/apt/sources.list.d/raspi.list.bak
+```
+3. 修改软件更新源配置：
+```
+  3.1. sudo nano /etc/apt/sources.list
+  3.2. 将第1行修改为：deb http://mirrors.ustc.edu.cn/raspbian/raspbian/ buster main contrib non-free rpi
+```
+4. 修改系统更新源配置:
+```
+  4.1. sudo nano /etc/apt/sources.list.d/raspi.list
+  4.2. 将第1行修改为：deb http://mirrors.ustc.edu.cn/archive.raspberrypi.org/debian/ buster main ui
+```
+5. 同步更新源
+  `sudo apt-get update`
+6. 对已安装软件包进行更新及升级
+  `sudo apt-get upgrade`
 
 #### 更改pip源（可选）
-
-
+1. ssh方式登录树莓派
+2. 略
 
 ### 2. JDK安装
-
-
+1. ssh方式登录树莓派
+2. 进入cd /etc/目录,打开nano profile文件
+3. 在文件末尾加入：
+```
+  export JAVA_HOME=/usr/share/jdk1.8.0
+  export PATH=$JAVA_HOME/bin:$PATH
+  export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+  **注意要把当前目录 “.”，也添加进去**
+```
+4. 补充：
+```
+  在安装openjava时，如果系统已安装过openjava,可执行update-alternatives --config java查看安装的目录，树莓派4b系统默认安装openjdk路径在：/usr/lib/jvm/java-11-openjdk-arm64/bin/java
+```
 
 ### 3. AIOT程序部署
 
