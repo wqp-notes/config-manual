@@ -1,3 +1,5 @@
+# Mosquitto安装及配置
+
 ## Mosquitto安装
 
 #### CentOS环境安装
@@ -13,5 +15,17 @@
 
 #### RaspberryPi环境安装
 1. 略
+
+
+## Mosquitto配置
+
+### 配置用户、密码、主题访问控制
+说明：
+> allow_anonymous 允许匿名
+> password_file 密码文件
+> acl_file 访问控制文件
+
+
+
 
 
