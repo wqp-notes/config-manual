@@ -86,6 +86,22 @@ country=CN
 
 
 ### 4. 开机自启动配置
+1. 编写launcher.sh文件，文件内容如下：
+```
+#!/bin/bash
+export JAVA_HOME=/aiot/java/jdk1.8.0_221
+export PATH=$JAVA_HOME/bin:$PATH
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+nohup java -jar /aiot/server/aiot-edge-stream-0.0.1-SNAPSHOT.jar > /aiot/server/java-nohup.out 2>&1 &
+nohup python3 /aiot/server/aiot-edge-sensor-0.0.1/source/main/core/launcher.py > /aiot/server/python-nohup.out 2>&1 &
+```
+2. 将该脚本文件标记为可执行文件，在脚本当前目录下执行
+`chmod a+x launcher.sh`
+3. 进入到cd /etc/目录，打开nano rc.local文件，在文件的**底部exit 0之前**添加: /绝对路径/launcher.sh，重启reboot
+
+
+
+
 
 
 
