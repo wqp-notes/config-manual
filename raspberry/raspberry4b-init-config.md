@@ -36,7 +36,12 @@ country=CN
 2. 修改树莓派pi帐号密码
 `sudo passwd pi`
 3. 修改树莓派系统root帐号密码
-`sudo passwd root`
+```
+1. sudo passwd root
+2. sudo passwd --unlock root
+3. 进入/etc/ssh/目录，打开nano sshd_config文件，将文件内PermitRootLogin without-password修改为PermitRootLogin yes并保存
+```
+
 4. 
 
 #### 更改软件源（可选）
