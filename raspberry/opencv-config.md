@@ -10,7 +10,7 @@ pip3 install opencv-contrib-python
 
 #### 2. 编写代码测试安装
 1. `import cv2`
-2. 补充: 如果出现了错误如 `ImportError: libhdf5_serial.so.100: cannot open shared object file: No such file or directory`, 则按如下操作：
+2. 补充: 如果出现了错误如 `ImportError: libjasper.so.1: cannot open shared object file: No such file or directory`, 则按如下操作：
 ```
 pip3 install opencv-contrib-python==3.3.0.9 -i https://www.piwheels.org/simple # 安装3309版本
 sudo apt-get update #安装依赖库
