@@ -83,6 +83,7 @@ country=CN
 ```
 
 ### 3. AIOT程序部署
+1. 略
 
 
 ### 4. 开机自启动配置
@@ -100,6 +101,17 @@ nohup python3 /aiot/server/aiot-edge-sensor-0.0.1/source/main/core/launcher.py >
 3. 进入到cd /etc/目录，打开nano rc.local文件，在文件的**底部exit 0之前**添加: /绝对路径/launcher.sh，重启reboot
 
 
+
+### 5. VNC开启配置
+1. 官方系统开启vnc:
+  * 临时开启执行 `vncserver即可，会临时分配连接ip+端口地址供连接使用`
+  * 永久开启执行 `sudo raspi-config，选择5 Interfacing Options回车，再选择“VNC”回车；最后点选“Finish”完成即可`
+  * 在vnc客户端直接输入ip就可以连接成功
+2. 非官方系统开启vnc:
+  * <a href="https://www.realvnc.com/en/connect/download/vnc/">vnc服务端下载</a> ,然后进行vncserver安装，注意操作系统及版本
+  * 服务端安装成功并开启vncserver服务
+  * 打开vnc客户连接vnc服务即可
+  
 
 
 
