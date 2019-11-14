@@ -26,7 +26,7 @@ setup(
 )
 ```
 2. 补充：
-  > 打包分为2类：
+  > 打包分为2类：  
   > 第1类：sdist（source distribution）
    `sdist使用方式：$ python setup.py sdist --formats=gztar,zip`
   
