@@ -51,12 +51,16 @@ country=CN
 3. 修改软件更新源配置：
 ```
   3.1. sudo nano /etc/apt/sources.list
-  3.2. 将第1行修改为：deb http://mirrors.ustc.edu.cn/raspbian/raspbian/ buster main contrib non-free rpi
+  3.2. 将第1行修改为:  
+  deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main contrib non-free rpi
+  deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main contrib non-free rpi
 ```
 4. 修改系统更新源配置:
 ```
   4.1. sudo nano /etc/apt/sources.list.d/raspi.list
-  4.2. 将第1行修改为：deb http://mirrors.ustc.edu.cn/archive.raspberrypi.org/debian/ buster main ui
+  4.2. 将第1行修改为:  
+  deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ stretch main ui
+  deb-src http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ stretch main ui
 ```
 5. 同步更新源
   `sudo apt-get update`
@@ -65,7 +69,18 @@ country=CN
 
 #### 更改pip源（可选）
 1. ssh方式登录树莓派
-2. 略
+2. 
+```
+新建~/.pip/pip.conf文件，写入其地址。阿里云、中科大、豆瓣等都有pip源。
+[global]
+index-url = http://pypi.douban.com/simple/
+```
+
+### 安装中文字体
+```
+安装中文字体
+sudo apt-get install ttf-wqy-zenhei ttf-wqy-microhei
+```
 
 ### 2. JDK安装
 1. ssh方式登录树莓派
