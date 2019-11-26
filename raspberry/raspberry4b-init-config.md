@@ -129,14 +129,20 @@ nohup python3 /aiot/server/aiot-edge-sensor-0.0.1/source/main/core/launcher.py >
   
 
 ### 6. 开机自启动chromium浏览器，并打开指定地址
-1. 在 /usr/share/xsessions目录下创建一个新的chromium.desktop文件,内容如下：
+1. 第一步  
+```
+cd /home/pi/.config
+mkdir autostart
+cd autostart
+nano chrom.desktop
+```
+2. 第二步  
 ```
 [Desktop Entry]
-Name=Chromium
-Comment=Iot Data Gather Chromium
 Type=Application
-Exec=/usr/lib/chromium-browser --no-first-run –start-maximized –start-fullscreen --kiosk-printing --kiosk http://app-health.daanlab.com/edgeSenseWindow/index.html#/dashboard?boxId=YK20191112ED001
+Exec=chromium-browser  --disable-popup-blocking --no-first-run --disable-desktop-notifications  --kiosk "http://www.baidu.com"
 ```
+
 
 
 
