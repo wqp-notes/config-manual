@@ -128,6 +128,16 @@ nohup python3 /aiot/server/aiot-edge-sensor-0.0.1/source/main/core/launcher.py >
   * 打开vnc客户连接vnc服务即可
   
 
+### 6. 开机自启动chromium浏览器，并打开指定地址
+1. 在 /usr/share/xsessions目录下创建一个新的chromium.desktop文件,内容如下：
+```
+[Desktop Entry]
+Name=Chromium
+Comment=Iot Data Gather Chromium
+Type=Application
+Exec=/usr/lib/chromium-browser --no-first-run –start-maximized –start-fullscreen --kiosk-printing --kiosk http://app-health.daanlab.com/edgeSenseWindow/index.html#/dashboard?boxId=YK20191112ED001
+```
+
 
 
 
