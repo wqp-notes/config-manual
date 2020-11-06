@@ -1,7 +1,7 @@
 ### 树莓派内网穿透工具
 
 1. 登录网站ttps://my.zerotier.com,创建帐号
-2. 进入https://my.zerotier.com/network点击Create创建网络,记住Network ID
+2. 进入`https://my.zerotier.com/network`点击Create创建网络,记住Network ID
 
 #### 给树莓派安装客户端，操作如下：
 - 在命令行内执行：`curl -s https://install.zerotier.com | sudo bash`，然后等待完成安装，会出现*** Success! You are ZeroTier address [ d896f5fb8d ]，这一行表示安装成功
