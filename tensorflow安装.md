@@ -3,7 +3,8 @@
 1. python版本号3.8.0
 2. tensorflow版本号1.15.0
 3. 安装依赖:
- + pip install tf_slim
+ + pip install tf_slim==1.1.0
+ + pip install pycocotools-windows==2.0.0.2
 
 #### 安装tensorflow(cpu版本,gpu同样操作)
 
