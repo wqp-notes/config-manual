@@ -1,22 +1,45 @@
 
-#### 写在操作之前
-1. python版本号3.8.0
-2. tensorflow版本号1.15.0
-3. 安装依赖:
+## 使用TensorFlow Object Detection Api 环境搭建、训练自定义的数据集、输出模型、使用模型目标检测
+
+### 环境搭建
+
+#### 写在操作之前（环境准备）
+
+提前说明，本文件所描述的内容是基本windows环境，仅cpu方式操作整个流程
+
+1. 操作系统windows10 64位
+
+1. 安装python版本号3.8.0
+
+2. 安装python相关依赖包
+ + pip install tensorflow==1.15.0
  + pip install tf_slim==1.1.0
  + pip install pycocotools-windows==2.0.0.2
+ + pip install numpy==1.19.3
 
-#### 安装tensorflow(cpu版本,gpu同样操作)
+3. 打开https://tensorflow.google.cn/install/pip?hl=zh-CN 认真阅读里面的内容，会有很大帮助
 
-1. 首先打开网站https://tensorflow.google.cn/install/pip?hl=zh-CN 
+4. <strong style color='red'>在任务盘符内新建一个目录，示例：d:ai\tftest, 这个目录后面所有操作处理是基于这个目录</strong>
 
-2. 创建python虚拟环境，参照第1步打开的页面找到 创建虚拟环境（推荐）模块操作即可
+#### 新建python虚拟环境
+这样做的目录是建立一个新的环境，在环境准备时添加的python相关依赖包都可以安装在这里面
+ + 创建一个新的虚拟环境,在cmd里执行：``` python -m venv --system-site-packages '你自己新虚拟环境保存的目录'， 示例:python -m venv --system-site-packages 'd:\python\venvs\tensorflow115```
+ 
+ + 激活虚拟环境,cmd 进入到 '你自己新虚拟环境保存的目录'\Scripts\activate
+ 
+#### 安装tensorflow
+ 在环境准备阶段已正常安装了tensorflow可忽略这部分内容，这里仅描述注意事项
+  + 只安装tensorflow 1.15.0版本，建议不要去安装tf 2.x的版本，原因是在后面执行model_main.py脚本时，里面有使用到trans_contrib模块，这个只在1.x里有，2.x里被移除了，所以安装版本时慎重
+  + tf 1.15.0版本在安装时要选择支持cpu的版本，不要选择支持gpu的版本，原因是本人电脑没有gpu,如果你的电脑有gpu配置，可以选择gpu的版本
 
-2. 安装tensorflow, 参照第1步打开的页面滑动到页面最底部，打开软件包位置模块，选择当前电脑环境所支持的版本进行安装操作
+#### 下载TensorFlow Object Detection Api包
+访问官方网站https://github.com/tensorflow/models/tags 下载最新版本的源码,下载到本地后进行解压操作,本人下载版本为2.3.0，建议保持一致
+  + 也可以直接下载压缩文件，下载完成后直接解压到
+ 
+ 
+ 
 
-3. 我安装windows cpu版本的方式是：pip install https://storage.googleapis.com/tensorflow/windows/cpu/tensorflow_cpu-2.3.0-cp38-cp38-win_amd64.whl 回车即可
 
-4. 安装过程中其它方式均参照第2步打开的链接进行核实处理
 
 #### 安装tensorflow detection api库(自定义数据并训练)
 
