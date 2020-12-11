@@ -19,7 +19,7 @@
 
 3. 打开https://tensorflow.google.cn/install/pip?hl=zh-CN 认真阅读里面的内容，会有很大帮助
 
-4. <strong style color='red'>在任务盘符内新建一个目录，示例：d:ai\tftest, 这个目录后面所有操作处理是基于这个目录</strong>
+4. <strong><font color='red'>在任务盘符内新建一个目录，示例：d:ai\tftest, 这个目录后面所有操作处理是基于这个目录</font></strong>
 
 #### 新建python虚拟环境
 这样做的目录是建立一个新的环境，在环境准备时添加的python相关依赖包都可以安装在这里面
