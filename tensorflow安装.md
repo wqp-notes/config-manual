@@ -439,12 +439,12 @@ python export_inference_graph.py --pipeline_config_path=d:\ai\tftest\ssd_mobilen
 5、使用模型
 ```android
 Mat frame = new Mat();
-        Imgproc.cvtColor(src, frame, Imgproc.COLOR_BGRA2BGR);
-        Mat blob = Dnn.blobFromImage(frame, 1.0 / 127.5, new Size(300, 300), new Scalar(127.5, 127.5), false, false);
-        List<Mat> outputBlobs= new ArrayList<>();
-        net.setInput(blob);
-        net.forward(outputBlobs, net.getUnconnectedOutLayersNames());
-        ...（待续）
+Imgproc.cvtColor(src, frame, Imgproc.COLOR_BGRA2BGR);
+Mat blob = Dnn.blobFromImage(frame, 1.0 / 127.5, new Size(300, 300), new Scalar(127.5, 127.5), false, false);
+List<Mat> outputBlobs= new ArrayList<>();
+tensorflow.setInput(blob);
+tensorflow.forward(outputBlobs, net.getUnconnectedOutLayersNames());
+...（其它代码略）
 ```
 
 至此实现了从tensorflow训练自己的模型，并采用android加载模型使用新模型的全流程操作
