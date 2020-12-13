@@ -403,13 +403,50 @@ python d:\ai\tftest\models-2.3.0\research\object_detection\model_main.py --model
 ```
 执行以上命令即开始训练数据，如果没有报错则就等待模型训练完成即可
 
+在等待训练完模型后，在d:\ai\tftest\training 目录下输入tensorboard --logdir ./ 可以启动浏览器可以访问的服务查看模型训练的整体结果
+在服务启动之后，在浏览器里输入http://localhost:6006 即可查看展示的训练结果
 
 
-### 三、输出模型（待续）
-后续补充
+### 三、输出模型
+1、首先在d:\ai\tftest目录新建finish目录
+2、再进入到d:\ai\tftest\models-2.3.0\research\object_detection目录之后，在cmd中输入以下内容并执行：
+```
+python export_inference_graph.py --pipeline_config_path=d:\ai\tftest\ssd_mobilenet_v2_coco.config --trained_checkpoint_prefix=d:\ai\tftest\training\model.ckpt-xxx --output_directory=d:\ai\tftest\finish
+```
+说明一下：上面脚本里面有个xxx，这里是指代模型训练完成后要导出哪个最优索引生成模型文件，可以d:\ai\tftest\training目录下查找checkpoint文件使用记事本打开，查看第一行进行核实确认
+
+执行完上面的脚本后finish目录下就是输出的模型结果相关文件，模型文件以*.pb后缀结尾
 
 
-### 四、使用模型目标检测（待续）
-后续补充
+### 四、使用模型目标检测（采用OpenCV Android方式检测模型）
+1、首先要下载opencv android包，这部分操作自行查找资料，opencv官网：https://opencv.org 
+2、在androidstudio中创建新工程，并引入opencv依赖库
+3、生成tensorflow模型在opencv中加载时需要的*.pbtxt文件
+ + 在cmd中进入到opencv安装的目录，然后进入到opencv/samples/dnn目录
+ + 在当前目录执行以下脚本：
+ ```
+ python tf_text_graph_ssd.py --input d:\ai\tftest\finish\frozen_inference_graph.pb --output d:\ai\tftest\finish\output.pbtxt --config d:\ai\tftest\finish\pipeline.config
+ ```
+ 说明一下：input参数是指tensorflow训练完成输出的新模型文件；output参数是指*.pbtxt生成的文件全路径名称；config参数是指tensorflow训练完成输出的配置文件；
+ 执行完上面的脚本后会在d:\ai\tftest\finish 目录生成一个output.pbtxt
+ 
+ 4、加载tf模型
+ ```android
+ Net tensorflow = Dnn.readNetFromTensorflow("这里填写*.pd文件的全路径", "这里填写*.pbtxt文件的全路径");
+ ```
+ 说明一下：在android当中模型文件要放在sdcard目录下进行加载才能成功
+
+5、使用模型
+```android
+Mat frame = new Mat();
+        Imgproc.cvtColor(src, frame, Imgproc.COLOR_BGRA2BGR);
+        Mat blob = Dnn.blobFromImage(frame, 1.0 / 127.5, new Size(300, 300), new Scalar(127.5, 127.5), false, false);
+        List<Mat> outputBlobs= new ArrayList<>();
+        net.setInput(blob);
+        net.forward(outputBlobs, net.getUnconnectedOutLayersNames());
+        ...（待续）
+```
+
+至此实现了从tensorflow训练自己的模型，并采用android加载模型使用新模型的全流程操作
 
 
