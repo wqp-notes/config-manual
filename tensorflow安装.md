@@ -65,7 +65,6 @@ D:\ai\tftest\models-2.3.0\research\slim
  + 第1步xml转csv,脚本如下：
  ```python
  # xml格式转csv格式
-
 import sys
 import glob
 import pandas as pd
@@ -104,8 +103,7 @@ if __name__ == '__main__':
  
  + 第1步csv转record,脚本如下：
  ```python
- # -*- coding: utf-8 -*-
-
+ # csv格式转record格式
 import os, sys
 import io
 import pandas as pd
