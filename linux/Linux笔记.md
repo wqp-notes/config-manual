@@ -77,6 +77,14 @@ tar zxvf ./jdk-8u2210linux-arm64-vfp-hflt.atr.gz –C /aiot/java/
   -C:解压的文件从当前目录复制到指定目录
 ```
 
+15. 给普通用户添加root的权限：
+```
+用root用户登录后，打开 vim /etc/sudoers文件，在文件内找到
+root    ALL=(ALL)       ALL （<===是已存在的）
+wqpthink ALL=(ALL)      NOPASSWD:ALL （<===是普通用户名称，自己添加的）
+，添加完成后保存即可
+```
+
 
 
 
